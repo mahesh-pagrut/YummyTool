@@ -9,7 +9,7 @@ Built with **React.js**, styled with **Tailwind CSS**, and enhanced with **Frame
 ---
 
 ## 🚀 Deployed App
-**Live Demo:** [Smart Recipe Tool](https://your-deployment-url.vercel.app)
+**Live Demo:** [Smart Recipe Tool](https://yummy-tool.vercel.app/)
 
 ---
 
