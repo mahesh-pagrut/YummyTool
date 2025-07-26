@@ -130,13 +130,29 @@ function App() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">🍳</span>
+                {/* Logo Icon */}
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-md group hover:scale-105 transition-transform duration-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-white group-hover:text-yellow-300 transition-colors duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12h6m2 8H7a2 2 0 01-2-2V7a2 2 0 012-2h2l1-2h4l1 2h2a2 2 0 012 2v11a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                </div>
+
+                {/* Logo Text */}
+                <h1 className="text-2xl font-semibold text-gray-800 group-hover:text-transparent bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text transition-all duration-300">
+                  YumTool
+                </h1>
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Smart Recipe Tool
-              </h1>
-            </div>
             <nav className="flex space-x-6">
               <button
                 onClick={() => setActiveTab('recipe')}
