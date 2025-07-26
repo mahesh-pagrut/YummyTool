@@ -34,18 +34,6 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useTransform(mouseY, [0, window.innerHeight], [15, -15]);
-  const rotateY = useTransform(mouseX, [0, window.innerWidth], [-15, 15]);
-
-  function handleMouseMove(e) {
-    mouseX.set(e.clientX);
-    mouseY.set(e.clientY);
-  }
-
-
   // Load saved recipes on component mount
   useEffect(() => {
     fetchSavedRecipes();
@@ -221,49 +209,47 @@ function App() {
 
       <main className="container mx-auto px-6 pt-8 pb-20 relative z-10">
         {/* Hero Section */}
+        {/* Hero Section */}
         <div className="text-center mb-12">
-          <div className="relative h-64 rounded-3xl overflow-hidden">
-            <AnimatePresence mode="wait">
+          <div className="relative h-48 md:h-72 rounded-3xl overflow-hidden">
+            {/* Stack both images */}
+            {images.map((img, index) => (
               <motion.img
-                key={currentIndex}
-                src={images[currentIndex]}
-                alt="Delicious food bowl"
-                initial={{ scale: 1.05, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 1.05, opacity: 0 }}
+                key={index}
+                src={img}
+                alt="Food bowl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: currentIndex === index ? 1 : 0 }}
                 transition={{ duration: 1.2 }}
-                className="absolute top-0 left-0 w-full h-full object-cover rounded-3xl shadow-xl"
+                className="absolute top-0 left-0 w-full h-full object-cover rounded-3xl"
+                style={{ zIndex: currentIndex === index ? 1 : 0 }}
               />
-            </AnimatePresence>
+            ))}
 
-            {/* New colored gradient overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 1 }}
-              className="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-black/70 to-rose-600/30 rounded-3xl flex items-center justify-center z-10"
-            >
+            {/* Gradient Overlay stays constant */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-800/30 via-black/70 to-rose-600/30 rounded-3xl flex items-center justify-center z-10">
               <div className="text-center text-white px-4">
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                  className="text-4xl font-bold mb-3"
+                  transition={{ duration: 1, delay: 0.4 }}
+                  className="text-3xl md:text-4xl font-bold mb-2"
                 >
                   AI-Powered Recipe Generation
                 </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
-                  className="text-xl opacity-90"
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="text-lg md:text-xl opacity-90"
                 >
                   Transform your ingredients into delicious meals
                 </motion.p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
+
 
 
 
@@ -277,8 +263,8 @@ function App() {
           {/* Ingredient Input Section */}
           <div className="bg-white/60 backdrop-blur-sm rounded-3xl shadow-xl p-8 mb-8">
             <h3 className="text-lg font-medium text-black/40 text-center mb-6">
-  What ingredients do you have?
-</h3>
+              What ingredients do you have?
+            </h3>
 
 
 
