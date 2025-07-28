@@ -5,6 +5,7 @@ import bowl1 from './assets/bowl1.jpg';
 import bowl2 from './assets/bowl2.jpg';
 import bowl3 from './assets/bowl3.jpg';
 import bowl4 from './assets/bowl4.jpg';
+import Header from './components/Header';
 
 
 
@@ -144,68 +145,9 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-purple-100 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              {/* Logo Icon */}
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-md group hover:scale-105 transition-transform duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 text-white group-hover:text-yellow-300 transition-colors duration-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12h6m2 8H7a2 2 0 01-2-2V7a2 2 0 012-2h2l1-2h4l1 2h2a2 2 0 012 2v11a2 2 0 01-2 2z"
-                  />
-                </svg>
-              </div>
+      {/* /////////////////// */}
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
-              {/* Logo Text */}
-              <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500">
-                YummyTool
-              </h1>
-
-
-
-            </div>
-            <nav className="flex space-x-6">
-              <button
-                onClick={() => setActiveTab('recipe')}
-                className={`px-4 py-2 rounded-full transition-all ${activeTab === 'recipe'
-                  ? 'bg-purple-600 text-white'
-                  : 'text-gray-600 hover:text-purple-600'
-                  }`}
-              >
-                Recipe Generator
-              </button>
-              <button
-                onClick={() => setActiveTab('meal-plan')}
-                className={`px-4 py-2 rounded-full transition-all ${activeTab === 'meal-plan'
-                  ? 'bg-purple-600 text-white'
-                  : 'text-gray-600 hover:text-purple-600'
-                  }`}
-              >
-                Meal Planner
-              </button>
-              <button
-                onClick={() => setActiveTab('saved')}
-                className={`px-4 py-2 rounded-full transition-all ${activeTab === 'saved'
-                  ? 'bg-purple-600 text-white'
-                  : 'text-gray-600 hover:text-purple-600'
-                  }`}
-              >
-                Saved Recipes
-              </button>
-            </nav>
-          </div>
-        </div>
-      </header>
 
       <main className="container mx-auto px-6 pt-8 pb-20 relative z-10">
         {/* Hero Section */}
